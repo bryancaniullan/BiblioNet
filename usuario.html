@@ -43,30 +43,57 @@
                 <div class="card shadow-sm">
                     <div class="card-body p-4">
                         <h2 class="card-title text-center mb-4">Acceso Usuario</h2>
-                        <form>
+                        <form id="loginForm">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Correo Electrónico:</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su correo electrónico" required>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Ingrese su correo electrónico" required>
                             </div>
-
                             <div class="mb-3">
                                 <label for="password" class="form-label">Contraseña:</label>
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>
                             </div>
-
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary">Ingresar</button>
                             </div>
                         </form>
+                        <div id="error-message" class="alert alert-danger mt-3 d-none" role="alert">
+                           </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+    
     <footer class="footer-main bg-custom-dark text-white text-center py-3 mt-auto">
         <p class="mb-0">&copy; 2025 BiblioNet. Todos los derechos reservados.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        // 1. Seleccionar el formulario
+        const loginForm = document.getElementById('loginForm');
+
+        // 2. Escuchar el evento 'submit' (cuando se hace clic en "Ingresar")
+        loginForm.addEventListener('submit', function(event) {
+            // Prevenir que la página se recargue
+            event.preventDefault();
+
+            // 3. Obtener los valores de los campos
+            const emailInput = document.getElementById('email').value;
+            const passwordInput = document.getElementById('password').value;
+            const errorMessageDiv = document.getElementById('error-message');
+
+            // 4. Validar las credenciales
+            if (emailInput === 'usuario' && passwordInput === '1234') {
+                // Si son correctas, redirigir a la página principal del usuario
+                window.location.href = 'usuarioprincipal.html';
+            } else {
+                // Si son incorrectas, mostrar el mensaje de error
+                errorMessageDiv.textContent = 'Usuario o contraseña incorrecta.';
+                errorMessageDiv.classList.remove('d-none'); // Quita la clase que oculta el div
+            }
+        });
+    </script>
 </body>
 </html>
