@@ -1,77 +1,269 @@
-/* Estilos CSS básicos para mejorar la apariencia */
+/* ================================================= */
+/* --- ESTILOS GENERALES Y LAYOUT BASE --- */
+/* ================================================= */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #e8e6e1; /* Un gris claro, casi crema */
-    color: #333; /* Gris oscuro para el texto principal */
-}
-
-.header {
-    background-color: #2c3e50; /* Azul marino oscuro, elegante */
-    color: #f1c40f; /* Amarillo dorado para el contraste, más sutil */
-    padding: 20px;
-    text-align: center;
+    background-color: #f7f7f7;
+    color: #444;
 }
 
 .container {
-    width: 80%;
-    margin: auto;
+    width: 90%;
+    max-width: 1100px; 
+    margin: 20px auto;
     overflow: hidden;
-    padding: 20px;
+    padding: 0;
 }
 
+/* Colores de marca */
+:root {
+    --color-primary: #008080; /* Teal/Turquesa suave y elegante */
+    --color-secondary: #ff6347; /* Rojo coral suave (mantenido por si lo usas en otro lugar) */
+}
+
+/* ================================================= */
+/* --- ENCABEZADO MINIMALISTA (Logo, Buscador, Íconos) --- */
+/* ================================================= */
+
+.main-header-bar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 18px 5%; 
+    background-color: white; 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+}
+
+/* 1. Logo */
+.logo-container {
+    display: flex; 
+    align-items: center;
+}
+
+.logo-img {
+    height: 40px; 
+    margin-right: 8px;
+}
+
+.logo-text {
+    font-weight: 600;
+    font-size: 1.1em;
+    color: var(--color-primary); 
+    line-height: 1.2;
+}
+
+/* 2. Barra de Búsqueda - Limpio y Redondeado */
+.search-container {
+    display: flex; 
+    width: 45%; 
+    max-width: 500px;
+    border: 1px solid #eee; 
+    border-radius: 25px; 
+    overflow: hidden; 
+    background-color: #f7f7f7;
+}
+
+.search-input {
+    flex-grow: 1; 
+    padding: 10px 15px; 
+    border: none;
+    font-size: 0.9em;
+    background-color: transparent;
+}
+
+.search-button {
+    background-color: transparent; 
+    color: var(--color-primary);
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+/* 3. Íconos de Usuario */
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px; 
+}
+
+.action-link {
+    text-decoration: none;
+    color: #555;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    font-size: 11px; 
+}
+
+.action-text {
+    margin-top: 5px;
+    color: var(--color-primary); 
+}
+
+.icon-placeholder {
+    font-size: 1.4em; 
+    color: #888; 
+    transition: color 0.2s;
+}
+
+.action-link:hover .icon-placeholder {
+    color: var(--color-primary); 
+}
+
+
+/* ================================================= */
+/* --- BARRA DE CATEGORÍAS (Limpia) --- */
+/* ================================================= */
+.categories-navbar {
+    width: 100%; 
+    margin: 0 auto;
+    background-color: white;
+}
+
+.nav-links {
+    list-style: none; 
+    padding: 12px 0; 
+    display: flex; 
+    justify-content: center; 
+    gap: 35px; 
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #555; 
+    font-weight: 500; 
+    font-size: 0.9em; 
+    text-transform: uppercase;
+    letter-spacing: 0.5px; 
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--color-primary); 
+}
+
+/* Línea de separación sutil */
+.nav-separator {
+    border: none;
+    border-top: 1px solid #e0e0e0; 
+    margin: 0;
+}
+
+
+/* ================================================= */
+/* --- ESTILOS PARA MENÚ DESPLEGABLE (Combobox) --- */
+/* ================================================= */
+
+.dropdown {
+    position: relative; /* Contenedor para la posición absoluta del menú */
+}
+
+/* Ocultar la lista desplegable por defecto */
+.dropdown-menu {
+    position: absolute;
+    top: 100%; 
+    left: 50%;
+    transform: translateX(-50%); /* Centrado horizontal */
+    z-index: 10; 
+    
+    list-style: none;
+    padding: 8px 0;
+    margin: 0;
+    min-width: 250px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+    /* Control de visibilidad para la transición suave */
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* Mostrar el menú al pasar el ratón */
+.dropdown:hover .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.dropdown-menu a {
+    color: #444; 
+    padding: 10px 18px; 
+    display: block; 
+    text-align: left;
+    text-transform: none; 
+    font-size: 0.9em;
+    font-weight: 400;
+    white-space: nowrap; 
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f8f8; 
+    color: var(--color-primary);
+}
+
+
+/* ================================================= */
+/* --- ESTILOS DE LISTA DE LIBROS (Minimalismo) --- */
+/* ================================================= */
 .book-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px 0;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 30px; 
+    padding: 30px 0;
 }
 
 .book {
     background-color: white;
-    border: 1px solid #ddd; /* Gris claro para el borde */
+    border: none; 
     border-radius: 8px;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); 
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.book:hover {
+    transform: translateY(-3px); 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 .book img {
+    /* --- REGLAS ACTUALIZADAS PARA TAMAÑO UNIFORME --- */
+    width: 100%; 
+    height: 250px; 
+    object-fit: cover; /* Recorta la imagen para asegurar que cubra el alto fijo sin estirarse */
+    /* ------------------------------------------- */
+    
     max-width: 100%;
-    height: auto;
     border-radius: 4px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .book h3 {
     margin: 10px 0 5px;
-    color: #34495e; /* Azul grisáceo oscuro */
+    color: #333;
+    font-size: 1.1em;
 }
 
 .book p {
     margin: 0;
-    font-size: 0.9em;
-    color: #666; /* Un gris más suave */
+    font-size: 0.85em;
+    color: #777; 
 }
 
+/* Estilos de Footer */
 .footer {
-    background-color: #34495e; /* Azul grisáceo oscuro */
-    color: white;
+    background-color: #333; 
+    color: #ddd;
     text-align: center;
-    padding: 10px;
-    margin-top: 20px;
-}
-
-.navbar {
-    text-align: center;
-    padding: 10px 0;
-    background-color: #34495e; /* Azul grisáceo oscuro */
-}
-
-.navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 0 15px;
-    font-weight: bold;
+    padding: 15px;
+    margin-top: 40px;
 }
