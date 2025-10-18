@@ -133,6 +133,10 @@ body {
     margin: 0;
 }
 
+.nav-links li { /* Regla agregada para asegurar el contexto de posición para el dropdown */
+    position: relative;
+}
+
 .nav-links a {
     text-decoration: none;
     color: #555; 
@@ -157,14 +161,18 @@ body {
 
 /* ================================================= */
 /* --- ESTILOS PARA MENÚ DESPLEGABLE (Combobox) --- */
+/* (Asegurando la compatibilidad con todos tus archivos HTML) */
 /* ================================================= */
 
-.dropdown {
+/* Para los archivos que usan 'dropdown' */
+.dropdown,
+.nav-dropdown-item { /* Incluimos la clase custom usada en otros archivos */
     position: relative; /* Contenedor para la posición absoluta del menú */
 }
 
 /* Ocultar la lista desplegable por defecto */
-.dropdown-menu {
+.dropdown-menu,
+.nav-dropdown-menu { /* Incluimos la clase custom usada en otros archivos */
     position: absolute;
     top: 100%; 
     left: 50%;
@@ -174,7 +182,7 @@ body {
     list-style: none;
     padding: 8px 0;
     margin: 0;
-    min-width: 250px;
+    min-width: 280px; /* Incrementado para el texto largo */
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -188,13 +196,16 @@ body {
 }
 
 /* Mostrar el menú al pasar el ratón */
-.dropdown:hover .dropdown-menu {
+.dropdown:hover .dropdown-menu,
+.nav-dropdown-item:hover .nav-dropdown-menu { /* Añadida la regla para la clase custom */
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
 }
 
-.dropdown-menu a {
+/* Estilos de los enlaces dentro del menú desplegable */
+.dropdown-menu a,
+.nav-dropdown-menu a {
     color: #444; 
     padding: 10px 18px; 
     display: block; 
@@ -205,7 +216,8 @@ body {
     white-space: nowrap; 
 }
 
-.dropdown-menu a:hover {
+.dropdown-menu a:hover,
+.nav-dropdown-menu a:hover {
     background-color: #f0f8f8; 
     color: var(--color-primary);
 }

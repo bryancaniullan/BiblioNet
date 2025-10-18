@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BiblioNet - Ficción</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -27,22 +28,19 @@
             <a href="#" class="action-link">
                 <span class="icon-placeholder">🤍</span>
             </a>
-            <a href="#" class="action-link">
+            <a href="#" class="action-link" data-bs-toggle="modal" data-bs-target="#cartModal" style="position: relative;">
                 <span class="icon-placeholder">🛒</span>
+                <span class="cart-count badge bg-danger rounded-pill" style="font-size: 0.6em; position: absolute; top: 5px; right: 5px;" id="cart-item-count">0</span>
             </a>
         </div>
     </header>
     
     <nav class="categories-navbar">
         <ul class="nav-links">
-            <li class="dropdown">
-                <a href="#">CATEGORÍAS ▼</a> 
-                <ul class="dropdown-menu">
-                    <li><a href="ficcion.html">📚 Ficción – novelas, cuentos, sagas, etc.</a></li>
+            <li class="nav-dropdown-item"> <a href="#">CATEGORÍAS ▼</a> 
+                <ul class="nav-dropdown-menu"> <li><a href="ficcion.html">📚 Ficción – novelas, cuentos, sagas, etc.</a></li>
                     <li><a href="no-ficcion.html">🧠 No ficción – biografías, historia, ciencia, filosofía.</a></li>
                     <li><a href="ciencia-tecnologia.html">🔬 Ciencia y tecnología – informática, medicina, ingeniería, robótica.</a></li>
-                    <li><a href="negocios-economia.html">💼 Negocios y economía – emprendimiento, finanzas, liderazgo.</a></li>
-                    <li><a href="arte-cultura.html">🎨 Arte y cultura – música, pintura, cine, diseño.</a></li>
                     <li><a href="infantil-juvenil-categoria.html">👧 Infantil y juvenil – cuentos, aventuras, aprendizaje.</a></li>
                 </ul>
             </li>
@@ -63,7 +61,7 @@
                 <h3>Cien años de soledad</h3>
                 <p>Autor: Gabriel García Márquez</p>
                 <p>Género: Realismo Mágico</p>
-                <button class="add-to-cart-btn">Agregar</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this)" data-title="Cien años de soledad" data-author="Gabriel García Márquez">Agregar</button>
             </article>
             
             <article class="book">
@@ -71,7 +69,7 @@
                 <h3>1984</h3>
                 <p>Autor: George Orwell</p>
                 <p>Género: Distopía</p>
-                <button class="add-to-cart-btn">Agregar</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this)" data-title="1984" data-author="George Orwell">Agregar</button>
             </article>
             
             <article class="book">
@@ -79,7 +77,7 @@
                 <h3>El señor de los anillos</h3>
                 <p>Autor: J. R. R. Tolkien</p>
                 <p>Género: Fantasía Épica</p>
-                <button class="add-to-cart-btn">Agregar</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this)" data-title="El señor de los anillos" data-author="J. R. R. Tolkien">Agregar</button>
             </article>
 
             <article class="book">
@@ -87,7 +85,7 @@
                 <h3>Don Quijote de la Mancha</h3>
                 <p>Autor: Miguel de Cervantes</p>
                 <p>Género: Novela</p>
-                <button class="add-to-cart-btn">Agregar</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this)" data-title="Don Quijote de la Mancha" data-author="Miguel de Cervantes">Agregar</button>
             </article>
             
             <article class="book">
@@ -95,7 +93,7 @@
                 <h3>Los juegos del hambre</h3>
                 <p>Autor: Suzanne Collins</p>
                 <p>Género: Ficción Juvenil</p>
-                <button class="add-to-cart-btn">Agregar</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this)" data-title="Los juegos del hambre" data-author="Suzanne Collins">Agregar</button>
             </article>
 
             <article class="book">
@@ -103,7 +101,7 @@
                 <h3>Dónde estás, mundo bello</h3>
                 <p>Autor: Sally Rooney</p>
                 <p>Género: Ficción contemporanea</p>
-                <button class="add-to-cart-btn">Agregar</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this)" data-title="Dónde estás, mundo bello" data-author="Sally Rooney">Agregar</button>
             </article>
 
             <article class="book">
@@ -111,7 +109,7 @@
                 <h3>Crónica de una muerte anunciada</h3>
                 <p>Autor: Gabriel García Márquez</p>
                 <p>Género: Ficción Juvenil</p>
-                <button class="add-to-cart-btn">Agregar</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this)" data-title="Crónica de una muerte anunciada" data-author="Gabriel García Márquez">Agregar</button>
             </article>
 
             <article class="book">
@@ -119,14 +117,38 @@
                 <h3>La canción de Aquiles</h3>
                 <p>Autor: Madeline Miller</p>
                 <p>Género: Ficción Juvenil</p>
-                <button class="add-to-cart-btn">Agregar</button>
+                <button class="add-to-cart-btn" onclick="addToCart(this)" data-title="La canción de Aquiles" data-author="Madeline Miller">Agregar</button>
             </article>
 
         </section>
     </main>
-
+    
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">🛒 Carrito de Préstamos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="cart-list" class="list-group">
+                        <li class="list-group-item text-muted" id="empty-cart-message">El carrito está vacío.</li>
+                    </ul>
+                    <div class="alert alert-warning mt-3">Máximo 5 libros por préstamo.</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Seguir Navegando</button>
+                    <button type="button" class="btn btn-primary" id="confirm-loan-btn" disabled>Confirmar Préstamo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <footer class="footer">
         <p>&copy; 2024 BiblioNet. Todos los derechos reservados.</p>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="cart.js"></script>
 </body>
 </html>

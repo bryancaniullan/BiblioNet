@@ -57,7 +57,7 @@
                             </div>
                         </form>
                         <div id="error-message" class="alert alert-danger mt-3 d-none" role="alert">
-                           </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -71,27 +71,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script>
-        // 1. Seleccionar el formulario
+        // Seleccionar el formulario
         const loginForm = document.getElementById('loginForm');
 
-        // 2. Escuchar el evento 'submit' (cuando se hace clic en "Ingresar")
+        // Escuchar el evento 'submit'
         loginForm.addEventListener('submit', function(event) {
-            // Prevenir que la página se recargue
             event.preventDefault();
 
-            // 3. Obtener los valores de los campos
-            const emailInput = document.getElementById('email').value;
-            const passwordInput = document.getElementById('password').value;
+            // Obtener los valores ingresados
+            const emailInput = document.getElementById('email').value.trim();
+            const passwordInput = document.getElementById('password').value.trim();
             const errorMessageDiv = document.getElementById('error-message');
 
-            // 4. Validar las credenciales
-            if (emailInput === 'usuario' && passwordInput === '1234') {
-                // Si son correctas, redirigir a la página principal del usuario
+            // Validar las credenciales
+            if (emailInput === 'test@test.com' && passwordInput === '123456') {
                 window.location.href = 'usuarioprincipal.html';
             } else {
-                // Si son incorrectas, mostrar el mensaje de error
                 errorMessageDiv.textContent = 'Usuario o contraseña incorrecta.';
-                errorMessageDiv.classList.remove('d-none'); // Quita la clase que oculta el div
+                errorMessageDiv.classList.remove('d-none');
             }
         });
     </script>
